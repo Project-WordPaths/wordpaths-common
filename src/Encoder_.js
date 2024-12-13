@@ -15,9 +15,11 @@ export default class Encoder_
      * Decodes a float array from bytes.
      */
     static decodeFloatArrayFromBytes(bytes) {
+        console.log(bytes.buffer)
         if(!bytes.buffer) {
             bytes = new Uint8Array(bytes)
         }
+        
 
         const items_f32     = new Float32Array(
             bytes.buffer, 

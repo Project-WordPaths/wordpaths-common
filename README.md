@@ -3,17 +3,17 @@
 ## Features 
 
 1. **Array Operations** 
-    * `Array_.partition(A, size)`
-    * `Array_.subdivide(A, divisions)`
-    * `Array_.flatten(A)`
+    * `Array_.partition(array, size)`
+    * `Array_.subdivide(array, divisions)`
+    * `Array_.flatten(array)`
 
 2. **Common Operations**
-    * `Math_.average(X)`
-    * `Math_.variance(X)`
-    * `Math_.standardDeviation(x)`
+    * `Math_.average(array)`
+    * `Math_.variance(array)`
+    * `Math_.standardDeviation(array)`
     * `Math_.centroid(X)`
-    * `Math_.magnitude(v)`
-    * `Math_.normalize(v)`
+    * `Math_.magnitude(X)`
+    * `Math_.normalize(X)`
     * `Math_.dotProduct(v1, v2)`
     * `Math_.cosineSimilarity(v1, v2)`
     * `Math_.euclideanDistance(v1, v2)`
@@ -27,5 +27,5 @@
     * `Encoder_.decodeIntArrayFromBytes(bytes, dims)`
 
 4. **`BA2D` File Loading** 
-    * `BA2D_.load(file, dims, { onLoadProgress })`
-    * `BA2D_.save(file, dims, array, { onSaveProgress })`
+    * `BA2D_.load(file, dims, { onLoadProgress, type })`
+    * `BA2D_.save(file, dims, array, { onSaveProgress, type })`

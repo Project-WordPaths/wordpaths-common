@@ -6,7 +6,7 @@ class Array_
      * of mostly equal sizes except possibly
      * the last partition.
      */
-    static partition(A, size) {
+    static partition(array, size) {
 
     }
 
@@ -14,14 +14,14 @@ class Array_
      * Divides an array into partitions of
      * strictly equal sizes.
      */
-    static subdivide(A, divisions) {
+    static subdivide(array, divisions) {
 
     }
 
     /**
      * Flattens a multi-dimensional array.
      */
-    static flatten(A) {
+    static flatten(array) {
 
     }
 }

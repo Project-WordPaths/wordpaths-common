@@ -5,10 +5,15 @@ export class FileReader {}
 
 // ------------------------ //
 
-export class FSFileReader extends FileReader
-{
-    /** 
-     * Loads a file from file system.
+
+export class FSFileReader {
+    /**
+     * Loads a file from the file system.
+     * @param {string} file - The file path.
+     * @param {object} [options] - Options for loading.
+     * @param {function} [options.onProgress] - Progress callback function.
+     * @param {number|string} [options.chunkSize="max"] - Chunk size or "max".
+     * @returns {Promise<Buffer>} - Resolves to a Buffer containing the file data.
      */
     static async load(
         file,
@@ -18,33 +23,37 @@ export class FSFileReader extends FileReader
         } = {}
     ) {
         return new Promise((resolve, reject) => {
-            const fileSize = fs.statSync(file).size
+            const fileSize = fs.statSync(file).size;
 
-            if(chunkSize == "max") {
-                chunkSize = fileSize
+            if (chunkSize === "max") {
+                chunkSize = fileSize;
             }
 
             const reader = fs.createReadStream(file, {
-                highWaterMark: chunkSize
-            })
-            
+                highWaterMark: chunkSize,
+            });
 
-            let data = "";
-            let chunks = Math.ceil(fileSize / chunkSize)
-            let chunkNo = 0
+            const chunks = [];
+            let chunkNo = 0;
+            const totalChunks = Math.ceil(fileSize / chunkSize);
 
             reader.on("data", (chunk) => {
-                chunkNo += 1
-                data += chunk
-                onProgress && onProgress(chunkNo, chunks)
-            })
+                chunks.push(chunk);
+                chunkNo += 1;
+                onProgress && onProgress(chunkNo, totalChunks);
+            });
 
             reader.on("end", () => {
-                resolve(Buffer.from(data, 'utf8'))
-            })
-        })
+                resolve(Buffer.concat(chunks));
+            });
+
+            reader.on("error", (err) => {
+                reject(err);
+            });
+        });
     }
 }
+
 
 // ------------------------ //
 

@@ -40,7 +40,7 @@ export class FSFileReader extends FileReader
             })
 
             reader.on("end", () => {
-                resolve(Buffer.from(data))
+                resolve(Buffer.from(data, 'utf8'))
             })
         })
     }

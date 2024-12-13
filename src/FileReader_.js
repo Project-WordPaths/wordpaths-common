@@ -73,7 +73,7 @@ export class HttpFileReader extends FileReader
             onDownloadProgress(progress) {
                 onProgress && onProgress(progress.bytes, progress.total)
             },
-            type : type
+            responseType : type
         })
         const data = response.data 
         return data

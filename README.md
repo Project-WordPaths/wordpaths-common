@@ -11,7 +11,6 @@
     * `Math_.average(array)`
     * `Math_.variance(array)`
     * `Math_.standardDeviation(array)`
-    * `Math_.centroid(X)`
     * `Math_.magnitude(X)`
     * `Math_.normalize(X)`
     * `Math_.dotProduct(v1, v2)`
@@ -26,10 +25,13 @@
     * `Encoder_.encodeIntArrayToBytes(floatArray, dims)`
     * `Encoder_.decodeIntArrayFromBytes(bytes, dims)`
 
-4. ** `BA2D` File Loading** 
-    * `BA2D_.load(file, dims, { onLoadProgress, type })`
-    * `BA2D_.save(file, dims, array, { onSaveProgress, type })`
-
-5. ** `FileReader` File Loading** 
+4. **`FileReader` File Loading** 
     * `FSFileReader.load(file, { onProgress, chunkSize })`
     * `HttpFileReader.load(file, { onProgress })`
+
+5. **`ProgressItems`** 
+    * `const tasks = new ProgressItems_()`
+    * `tasks.add("loading.item1", () => {})`
+    * `tasks.add("loading.item2", () => {})`
+    * `tasks.add("loading.item3", () => {})`
+    * `tasks.run({ onProgress(perc, message) , onSubProgress(perc) })`

@@ -1,4 +1,5 @@
 import axios from "axios"
+import fs from "fs"
 
 export class FileReader {}
 
@@ -9,14 +10,39 @@ export class FSFileReader extends FileReader
     /** 
      * Loads a file from file system.
      */
-    static load(
+    static async load(
         file,
         { 
             onProgress = null,
-            chunkSize = 10000
+            chunkSize = "max"
         } = {}
     ) {
+        return new Promise((resolve, reject) => {
+            const fileSize = fs.statSync(file).size
 
+            if(chunkSize == "max") {
+                chunkSize = fileSize
+            }
+
+            const reader = fs.createReadStream(file, {
+                highWaterMark: chunkSize
+            })
+            
+
+            let data = "";
+            let chunks = Math.ceil(fileSize / chunkSize)
+            let chunkNo = 0
+
+            reader.on("data", (chunk) => {
+                chunkNo += 1
+                data += chunk
+                onProgress && onProgress(chunkNo, chunks)
+            })
+
+            reader.on("end", () => {
+                resolve(data)
+            })
+        })
     }
 }
 
@@ -25,15 +51,22 @@ export class FSFileReader extends FileReader
 export class HttpFileReader extends FileReader
 {
     /** 
-     * Loads a file from file system.
+     * Loads a file from http.
      */
-    static load(
-        file,
+    static async load(
+        url,
         { 
             onProgress = null,
-            chunkSize = 10000
+            type = "arraybuffer"
         } = {}
     ) {
-
+        const response = await axios.get(url, {
+            onDownloadProgress(progress) {
+                onProgress && onProgress(progress.bytes, progress.total)
+            },
+            type : type
+        })
+        const data = response.data 
+        return data
     }
 }

@@ -11,7 +11,7 @@ npm add $@
 
 # --- link project folder
 echo "--- LINKING PROJECT FOLDER"
-npm link . 
+ln -s ../ node_modules/wordpaths-common
 
 # --- mark as done 
 echo "--- DONE"

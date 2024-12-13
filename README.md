@@ -26,6 +26,10 @@
     * `Encoder_.encodeIntArrayToBytes(floatArray, dims)`
     * `Encoder_.decodeIntArrayFromBytes(bytes, dims)`
 
-4. **`BA2D` File Loading** 
+4. ** `BA2D` File Loading** 
     * `BA2D_.load(file, dims, { onLoadProgress, type })`
     * `BA2D_.save(file, dims, array, { onSaveProgress, type })`
+
+5. ** `FileReader` File Loading** 
+    * `FSFileReader.load(file, { onProgress, chunkSize })`
+    * `HttpFileReader.load(file, { onProgress })`

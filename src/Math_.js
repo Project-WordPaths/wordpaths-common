@@ -51,20 +51,29 @@ class Math_
     }
 
     /** 
-     * Cosine similarity of a vector.
+     * Cosine similarity of two vectors.
      */
     static cosineSimilarity(v1, v2) {
 
     }
 
-    static euclideanDistance(v1, v2) {
+    /** 
+     * Computes the euclidean distance between two points
+     */
+    static euclideanDistance(p1, p2) {
 
     }
 
+    /** 
+     * Computes the cosine distance between two vectors.
+     */
     static cosineDistance(v1, v2) {
 
-    }
+    }   
 
+    /** 
+     * Computes the similarity score between two vectors.
+     */
     static similarityScore(v1, v2) {
 
     }

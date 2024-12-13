@@ -92,4 +92,18 @@ export default class Math_
     static adjustedCosineDistance(v1, v2) {
         return this.cosineDistance(v1, v2) / 2
     }
+
+    /** 
+     * Centroid 
+     */
+    static centroid(X) {
+        let dims     = X[0].length
+        let centroid = new Array(dims).fill(0) 
+        for(let i = 0; i < X.length; i++) {
+            for(let j = 0; j < dims; j++) {
+                centroid[j] += X[i][j]
+            }
+        }
+        return centroid.map(x => x / X.length)
+    }
 }

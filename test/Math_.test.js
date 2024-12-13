@@ -106,4 +106,15 @@ describe("Math", () => {
         })  
     })
 
+    describe("centroid()", () => {
+        it("must compute centroid", () => {
+            const A = [1.2, 3.4, 5.6] 
+            const B = [7.8, 9.0, 10.1] 
+            const C = [11.8, 12.3, 14.9]
+            const X = [A, B, C]
+            const centroid = Math_.roundArray(Math_.centroid(X), 2)
+            assert.deepEqual(centroid, [6.93, 8.23, 10.2])
+        })  
+    })
+
 })

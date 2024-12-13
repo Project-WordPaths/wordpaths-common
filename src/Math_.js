@@ -54,7 +54,7 @@ export default class Math_
        let products = v1.map((x, i) => v1[i] * v2[i])
        return products.reduce((a, b) => a + b, 0)
     }
-    
+
     /** 
      * Normalizes a vector.
      */

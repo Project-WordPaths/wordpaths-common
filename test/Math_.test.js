@@ -105,4 +105,5 @@ describe("Math", () => {
             assert.equal(cosineDistance, 0.04)
         })  
     })
+
 })

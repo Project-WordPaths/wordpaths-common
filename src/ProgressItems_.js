@@ -9,13 +9,13 @@ export default class ProgressItems_
         this.items.push([name, task])
     }
 
-    run({ onProgress = null, onSubProgress = null} = {}) {
+    async run({ onProgress = null, onSubProgress = null} = {}) {
         let i = 0
         let n = this.items.length
         for(let item of this.items) {
             const [name, task] = item 
             const perc = i / n 
-            task(i, n, onSubProgress)
+            await task(i, n, onSubProgress)
             onProgress && onProgress(perc, name)
             i += 1
         }

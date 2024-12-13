@@ -19,6 +19,6 @@ export default class ProgressItems_
             onProgress && onProgress(perc, name)
             i += 1
         }
-        onProgress(1, "#done")
+        onProgress && onProgress(1, "#done")
     }
 }

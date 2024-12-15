@@ -106,4 +106,21 @@ export default class Math_
         }
         return centroid.map(x => x / X.length)
     }
+
+    /**
+     * Geometric Mean
+     */
+    static geometricMean(values) {
+        let product = values.reduce((acc, curr) => acc * curr, 1);
+        return Math.pow(product, 1 / values.length);  
+    }
+
+    /**
+     * Harmonic Mean
+     */
+    static harmonicMean(values) {
+        let n = values.length 
+        let denominator = values.reduce((a, b) => a + 1 / b, 0)
+        return n / denominator
+    }
 }

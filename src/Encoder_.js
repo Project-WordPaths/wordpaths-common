@@ -33,7 +33,7 @@ export default class Encoder_
      * Encodes integer array to bytes.
      */
     static encodeIntArrayToBytes(intArray) {
-        const f32a          = new Int32Array(intArray)
+        const f32a          = new Uint32Array(intArray)
         const bytes         = new Uint8Array(f32a.buffer)
         return bytes
     }
@@ -46,10 +46,10 @@ export default class Encoder_
             bytes = new Uint8Array(bytes)
         }
 
-        const items_i32     = new Int32Array(
+        const items_i32     = new Uint32Array(
             bytes.buffer, 
             bytes.byteOffset, 
-            bytes.byteLength / Int32Array.BYTES_PER_ELEMENT
+            bytes.byteLength / Uint32Array.BYTES_PER_ELEMENT
         );
         const items = Array.from(items_i32)
         return items

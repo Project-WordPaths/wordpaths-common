@@ -19,10 +19,10 @@ describe("Encoder_", () => {
     describe("Integer Array Encoding", () => {
         it("must encode and decode properly", () => {
             const originalArray = [9, 8, 7, 6, 5, 1, 2, 3, 4]
-            const bytes = Encoder_.encodeIntArrayToBytes(originalArray)
+            const bytes = Encoder_.encodeUIntArrayToBytes(originalArray)
             const derivedArray = 
                 Encoder_
-                    .decodeIntArrayFromBytes(bytes)
+                    .decodeUIntArrayFromBytes(bytes)
                     .map(x => parseFloat(x.toFixed(2)))
             assert.deepEqual(originalArray, derivedArray)
         })

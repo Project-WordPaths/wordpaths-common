@@ -32,7 +32,7 @@ export default class Encoder_
     /**
      * Encodes integer array to bytes.
      */
-    static encodeIntArrayToBytes(intArray) {
+    static encodeUIntArrayToBytes(intArray) {
         const f32a          = new Uint32Array(intArray)
         const bytes         = new Uint8Array(f32a.buffer)
         return bytes
@@ -41,7 +41,7 @@ export default class Encoder_
     /**
      * Decodes an integer array from bytes.
      */
-    static decodeIntArrayFromBytes(bytes) {
+    static decodeUIntArrayFromBytes(bytes) {
         if(!bytes.buffer) {
             bytes = new Uint8Array(bytes)
         }

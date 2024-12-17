@@ -22,8 +22,8 @@
 3. **Byte Encoding** 
     * `Encoder_.encodeFloatArrayToBytes(floatArray, dims)`
     * `Encoder_.decodeFloatArrayFromBytes(bytes, dims)`
-    * `Encoder_.encodeIntArrayToBytes(floatArray, dims)`
-    * `Encoder_.decodeIntArrayFromBytes(bytes, dims)`
+    * `Encoder_.encodeUIntArrayToBytes(floatArray, dims)`
+    * `Encoder_.decodeUIntArrayFromBytes(bytes, dims)`
 
 4. **`FileReader` File Loading** 
     * `FSFileReader.load(file, { onProgress, chunkSize })`

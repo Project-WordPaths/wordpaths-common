@@ -90,7 +90,7 @@ export default class Math_
      * Inverted Score
      */
     static adjustedCosineDistance(v1, v2) {
-        return this.cosineDistance(v1, v2) / 2
+        return Math_.cosineDistance(v1, v2) / 2
     }
 
     /** 

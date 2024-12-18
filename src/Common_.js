@@ -13,3 +13,9 @@ export async function makeDirectory(directory, overwrite = false) {
         fs.mkdirSync(directory, { recursive: true })
     }
 } 
+
+export function clearLastLine() {
+    if(!process.stdout.moveCursor) return
+    process.stdout.moveCursor(0, -1) 
+    process.stdout.clearLine(1)
+}

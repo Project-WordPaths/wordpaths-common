@@ -46,4 +46,15 @@ export default class Array_
         }
         return flattened
     }
+    
+    /**
+     * Enumerate array as string.
+     */
+    static enumerate(items) {
+        let str = ""
+        for(let i = 0; i < items.length; i++) {
+            str += `${i}. ${items[i]}\n`
+        }
+        return str
+    }
 }

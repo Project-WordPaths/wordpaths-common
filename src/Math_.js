@@ -65,32 +65,50 @@ export default class Math_
     /** 
      * Cosine similarity of two vectors.
      */
-    static cosineSimilarity(v1, v2) {
+    static cosineSimilarity(v1, v2, normalized = false) {
         const dotProduct = Math_.dotProduct(v1, v2) 
-        const magnitudeA = Math_.magnitude(v1)
-        const magnitudeB = Math_.magnitude(v2)
-        return dotProduct / (magnitudeA * magnitudeB)
+        if(!normalized) {
+            const magnitudeA = Math_.magnitude(v1)
+            const magnitudeB = Math_.magnitude(v2)
+            return dotProduct / (magnitudeA * magnitudeB)
+        } else {
+            return dotProduct
+        }
     }
+
+    /** 
+     * Computes the euclidean distance between two vectors.
+     */
+    static euclideanDistance(v1, v2) {
+        let sum = 0;
+        
+        for (let i = 0; i < v1.length; i++) {
+            let diff = v1[i] - v2[i];
+            sum += diff * diff;
+        }
+
+        return Math.sqrt(sum);
+    }   
 
     /** 
      * Computes the cosine distance between two vectors.
      */
-    static cosineDistance(v1, v2) {
-        return 1 - Math_.cosineSimilarity(v1, v2)
+    static cosineDistance(v1, v2, normalized = false) {
+        return 1 - Math_.cosineSimilarity(v1, v2, normalized)
     }   
 
     /** 
      * Computes the similarity score between two vectors.
      */
-    static similarityScore(v1, v2) {
-        return (Math_.cosineSimilarity(v1, v2) + 1) / 2
+    static similarityScore(v1, v2, normalized = false) {
+        return (Math_.cosineSimilarity(v1, v2, normalized) + 1) / 2
     }
 
     /** 
      * Inverted Score
      */
-    static adjustedCosineDistance(v1, v2) {
-        return Math_.cosineDistance(v1, v2) / 2
+    static adjustedCosineDistance(v1, v2, normalized = false) {
+        return Math_.cosineDistance(v1, v2, normalized) / 2
     }
 
     /** 
@@ -113,6 +131,11 @@ export default class Math_
     static geometricMean(values) {
         let product = values.reduce((acc, curr) => acc * curr, 1);
         return Math.pow(product, 1 / values.length);  
+    }
+
+    static unrootedGeometricMean(values) {
+        let product = values.reduce((acc, curr) => acc * curr, 1);
+        return product
     }
 
     /**

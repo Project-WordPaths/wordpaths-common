@@ -71,7 +71,7 @@ export class HttpFileReader extends FileReader
     ) {
         const response = await axios.get(url, {
             onDownloadProgress(progress) {
-                onProgress && onProgress(progress.bytes, progress.total)
+                onProgress && onProgress(progress.progress, progress.total)
             },
             responseType : type
         })
